@@ -5,7 +5,7 @@ const { generateToken } = require('../../helpers/authToken');
 
 async function register(req, res) {
   try {
-    const [user] = await Users.add(req.body);
+    const user = await Users.add(req.body);
     return res.status(201).json(user);
   } catch (error) {
     return res.status(500).json({ error: 'Error Creating User' });
