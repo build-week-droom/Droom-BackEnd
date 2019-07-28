@@ -14,4 +14,12 @@ const checkCompanyExists = async (req, res, next) => {
   }
 };
 
-module.exports = { checkCompanyExists };
+const validateCompanyRole = (req, res, next) => {
+  if (req.authUser.isCompany) {
+    return next();
+  }
+  return res.status(401).json({ error: 'Unauthorized Access' });
+};
+
+
+module.exports = { checkCompanyExists, validateCompanyRole };
