@@ -1,7 +1,5 @@
 const db = require('../../config/dbConfig');
 
-const returnFields = ['id', 'title', 'description', 'location', 'createdAt'];
-
 const returnJoinFields = [
   'jobs.id',
   'jobs.title',
@@ -28,13 +26,13 @@ function getBy(id) {
 
 function add(job) {
   return db('jobs')
-    .returning(returnFields)
+    .returning('*')
     .insert(job);
 }
 
 function update(id, changes) {
   return db('jobs')
-    .returning(returnFields)
+    .returning('*')
     .where({ id })
     .update(changes);
 }
