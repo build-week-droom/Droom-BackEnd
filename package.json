@@ -2,13 +2,25 @@
   "name": "droom-backend",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/build-week-droom/Droom-BackEnd.git",
   "author": "Noble Obioma <nobioma1@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "node ./index.js",
     "server": "cross-env DB_ENV=development nodemon ./index.js"
   },
+
+  "engines": {
+    "node": "10.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/build-week-droom/Droom-BackEnd.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/build-week-droom/Droom-BackEnd/issues"
+  },
+  "homepage": "https://github.com/build-week-droom/Droom-BackEnd#readme",
   "devDependencies": {
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
