@@ -3,6 +3,7 @@
 ```json
 "version": "1.0"
 "description": "DROOM REST API"
+"apihost":  "https://jobdroom.herokuapp.com"
 ```
 
 ### PITCH
