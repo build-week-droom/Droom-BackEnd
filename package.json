@@ -1,0 +1,42 @@
+{
+  "name": "droom-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Noble Obioma <nobioma1@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.js",
+    "server": "cross-env DB_ENV=development nodemon ./index.js"
+  },
+
+  "engines": {
+    "node": "10.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/build-week-droom/Droom-BackEnd.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/build-week-droom/Droom-BackEnd/issues"
+  },
+  "homepage": "https://github.com/build-week-droom/Droom-BackEnd#readme",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.20.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.19.1",
+    "pg": "^7.12.0"
+  }
+}
