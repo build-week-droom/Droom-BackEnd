@@ -1,19 +1,27 @@
 const db = require('../../config/dbConfig');
 
+const selectFields = [
+  'users.id',
+  'users.name',
+  'users.email',
+  'jp.interests',
+  'jp.pastExperience',
+  'jp.location',
+  'jp.profileImg',
+];
+
 function getProfile(id) {
   return db('jobSeekerProfiles as jp')
-    .select([
-      'users.id',
-      'users.name',
-      'users.email',
-      'jp.interests',
-      'jp.pastExperience',
-      'jp.location',
-      'jp.profileImg',
-    ])
+    .select(selectFields)
     .join('users', 'users.id', 'jp.userId')
     .where('jp.userId', id)
     .first();
+}
+
+function getAllProfile() {
+  return db('jobSeekerProfiles as jp')
+    .select(selectFields)
+    .join('users', 'users.id', 'jp.userId');
 }
 
 async function updateProfile(id, changes) {
@@ -25,4 +33,4 @@ async function updateProfile(id, changes) {
   return newProfile;
 }
 
-module.exports = { getProfile, updateProfile };
+module.exports = { getProfile, updateProfile, getAllProfile };
