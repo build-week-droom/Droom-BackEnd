@@ -7,7 +7,7 @@ const validate = require('../../helpers/validate');
 const profileSchema = require('./jobSeekerSchema');
 
 jobSeekersRouter.get('/', validateToken, getAllProfiles);
-jobSeekersRouter.get('/:id', checkUserExists, getProfile);
+jobSeekersRouter.get('/:id', validateToken, checkUserExists, getProfile);
 jobSeekersRouter.put('/', validateToken, validateUserRole, validate(profileSchema), updateProfile);
 
 module.exports = jobSeekersRouter;
