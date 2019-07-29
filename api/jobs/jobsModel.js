@@ -30,6 +30,13 @@ function add(job) {
     .insert(job);
 }
 
+function get(id, authId) {
+  return db('jobs')
+    .where({ id })
+    .andWhere({ userId: authId })
+    .first();
+}
+
 function update(id, changes) {
   return db('jobs')
     .returning('*')
@@ -44,6 +51,7 @@ function remove(id) {
 }
 
 module.exports = {
+  get,
   getAll,
   add,
   getBy,
