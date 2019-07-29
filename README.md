@@ -55,6 +55,7 @@ Request Error ( **400 - Bad Request** || **404 - Not Found** || **500 - Internal
 | [PUT /api/seekers](#put-apiseekers)              | Update a Job Seeker Profile       |
 | [GET /api/jobs](#get-apijobs)                    | Get all Jobs                      |
 | [GET /api/jobs/id](#get-apijobsid)               | Get a particular Job by ID        |
+| [POST /api/jobs](#post-apijobs)                  | Create a new Job posting          |
 | [PUT /api/jobs/id](#put-apijobsid)               | Update Job                        |
 | [DELETE /api/jobs/id](#put-apijobs)              | Delete a particular Job           |
 
@@ -67,6 +68,8 @@ Response body:
       "message": "Welcome to Droom API"
   }
 ```
+
+## Auth
 
 #### POST /api/auth/register
 
@@ -116,6 +119,8 @@ Response body:
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiY29tcGFueUBlbWFpbC5jb20iLCJpc0NvbXBhbnkiOnRydWUsImlhdCI6MTU2NDM3MjY0MSwiZXhwIjoxNTY0NDU5MDQxfQ.U5XPvzO7eNw48b4hn4BzIrmNT-yA2b-qABypN-O7BfU"
   }
 ```
+
+## Company
 
 #### GET /api/company/id
 
@@ -167,6 +172,8 @@ Response body:
     "profileImg": "https://res.cloudinary.com/elbon/image/upload/v1561734286/luncher_assets/pfzxjfpkh47yepawxbzf.jpg"
   }
 ```
+
+## Job Seekers
 
 #### GET /api/seekers
 
@@ -269,6 +276,8 @@ Response body:
   }
 ```
 
+## Jobs
+
 #### GET /api/jobs
 
 _**Description**: Returns all Jobs Postings_.
@@ -342,6 +351,16 @@ Header
   Authorization: token(company)
 ```
 
+Request body:
+
+```json
+  {
+    "title": "Delivery Driver",
+    "description": "You’ll play a critical role in delivering on our promise to provide our customers with excellent customer service.",
+    "location": "Job Location on the Moon",
+  }
+```
+
 Response body:
 
 ```json
@@ -366,12 +385,22 @@ Header
   Authorization: token(company)
 ```
 
+Request body:
+
+```json
+  {
+    "title": "Delivery Driver updated",
+    "description": "You’ll play a critical role in delivering on our promise to provide our customers with excellent customer service.",
+    "location": "Job Location on the Moon",
+  }
+```
+
 Response body:
 
 ```json
   {
     "id": 1,
-    "title": "Delivery Driver",
+    "title": "Delivery Driver updated",
     "description": "You’ll play a critical role in delivering on our promise to provide our customers with excellent customer service.",
     "location": "Job Location on the Moon",
     "userId": 13,
