@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node ./index.js",
     "server": "cross-env DB_ENV=development nodemon ./index.js",
+    "migrate-dev": "npx knex migrate:rollback && npx knex migrate:latest && npx knex seed:run",
     "rollback-test": "./node_modules/.bin/knex migrate:rollback --env=test",
     "migrate-test": "./node_modules/.bin/knex migrate:latest --env=test",
     "seed-test": "./node_modules/.bin/knex seed:run --env=test",
