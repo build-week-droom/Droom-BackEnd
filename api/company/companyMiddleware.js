@@ -1,4 +1,4 @@
-const Company = require('./CompanyModel');
+const Company = require('./companyModel');
 
 const checkCompanyExists = async (req, res, next) => {
   const { id } = req.params;
