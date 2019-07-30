@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   development: {
     client: 'pg',
@@ -13,7 +15,7 @@ module.exports = {
 
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/droom_test',
+    connection: process.env.TEST_DB_URL,
     migrations: {
       directory: './db/migrations',
     },
