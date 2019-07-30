@@ -10,9 +10,9 @@ async function getAllCompanies(req, res) {
 }
 
 async function getCompanyProfile(req, res) {
-  const { userId } = req.company;
+  const { id } = req.company;
   try {
-    const companies = await Company.getProfile(userId);
+    const companies = await Company.getProfile(id);
     return res.status(200).json(companies);
   } catch (error) {
     return res.status(500).json({ error: error.message });
