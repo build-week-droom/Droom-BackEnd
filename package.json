@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node ./index.js",
     "server": "cross-env DB_ENV=development nodemon ./index.js",
-    "pretest": "knex migrate:rollback --env=test && knex migrate:latest --env=test && knex seed:run --env=test",
+    "rollback-test": "./node_modules/.bin/knex migrate:rollback --env=test",
+    "migrate-test": "./node_modules/.bin/knex migrate:latest --env=test",
+    "seed-test": "./node_modules/.bin/knex seed:run --env=test",
+    "pretest": "yarn rollback-test && yarn migrate-test && yarn seed-test ",
     "test": "cross-env DB_ENV=test jest --verbose"
   },
   "engines": {
