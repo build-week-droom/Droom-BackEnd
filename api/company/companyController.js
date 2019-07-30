@@ -1,4 +1,4 @@
-const Company = require('./CompanyModel');
+const Company = require('./companyModel');
 
 async function getAllCompanies(req, res) {
   try {
@@ -8,6 +8,15 @@ async function getAllCompanies(req, res) {
     return res.status(500).json({ error: error.message });
   }
 }
+
+async function getCompanyProfile(req, res) {
+  const { userId } = req.company;
+  try {
+    const companies = await Company.getProfile(userId);
+    return res.status(200).json(companies);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 }
 
 async function updateCompanyProfile(req, res) {
@@ -20,4 +29,4 @@ async function updateCompanyProfile(req, res) {
   }
 }
 
-module.exports = { getCompanyProfile, updateCompanyProfile };
+module.exports = { getAllCompanies, getCompanyProfile, updateCompanyProfile };
