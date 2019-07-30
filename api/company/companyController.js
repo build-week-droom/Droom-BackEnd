@@ -1,7 +1,13 @@
 const Company = require('./CompanyModel');
 
-function getCompanyProfile(req, res) {
-  return res.status(200).json(req.company);
+async function getAllCompanies(req, res) {
+  try {
+    const companies = await Company.getAll();
+    return res.status(200).json(companies);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
 }
 
 async function updateCompanyProfile(req, res) {
