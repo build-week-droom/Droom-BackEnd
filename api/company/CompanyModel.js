@@ -17,6 +17,7 @@ function getAll() {
 
 function get(id) {
   return db('companyProfiles as cp')
+    .select(['userId as id', 'about', 'location', 'profileImg'])
     .where('cp.userId', id)
     .first();
 }
@@ -37,8 +38,13 @@ async function updateProfile(id, changes) {
     .where({ userId: id })
     .update(changes)
     .returning('userId');
-  const newProfile = await getProfile(userId);
+  const newProfile = await get(userId);
   return newProfile;
 }
 
-module.exports = { get, getAll, getProfile, updateProfile };
+module.exports = {
+  get,
+  getAll,
+  getProfile,
+  updateProfile,
+};
