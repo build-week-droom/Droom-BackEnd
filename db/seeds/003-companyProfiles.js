@@ -4,7 +4,7 @@ exports.seed = knex => knex('companyProfiles')
     {
       about: 'At LaserCycle USA, we know that finding the best document management solution for your organization means reducing costs without sacrificing access to information.',
       location: 'Louisville, CO, USA',
-      profileImg: 'https://res.cloudinary.com/elbon/image/upload/v1564505004/droom_dev/laser.png',
+      profileImg: 'https://media.superpages.com/media/photos/00/16/82/41/75/images/012942721b799dcc3cdc5879624e03c3.jpg',
       userId: 5,
     },
     {
