@@ -6,9 +6,13 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./index.js",
-    "server": "cross-env DB_ENV=development nodemon ./index.js"
+    "server": "cross-env DB_ENV=development nodemon ./index.js",
+    "rollback-test": "./node_modules/.bin/knex migrate:rollback --env=test",
+    "migrate-test": "./node_modules/.bin/knex migrate:latest --env=test",
+    "seed-test": "./node_modules/.bin/knex seed:run --env=test",
+    "pretest": "yarn rollback-test && yarn migrate-test && yarn seed-test ",
+    "test": "cross-env DB_ENV=test jest --verbose"
   },
-
   "engines": {
     "node": "10.16.0"
   },
@@ -26,7 +30,9 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^1.19.1"
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "@hapi/joi": "^15.1.0",

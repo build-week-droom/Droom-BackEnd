@@ -49,6 +49,7 @@ Request Error ( **400 - Bad Request** || **404 - Not Found** || **500 - Internal
 | [GET /](#get)                                    | Base URL                          |
 | [POST /api/auth/register](#post-apiauthregister) | Register new Job Seeker / Company |
 | [POST /api/auth/login](#post-apiauthlogin)       | Login for User / Company          |
+| [GET /api/company](#get-apicompany)              | Get all Companies                |
 | [GET /api/company/id](#get-apicompanyid)         | Get a particular Company by ID    |
 | [PUT /api/company](#put-apicompany)              | Update Company Profile            |
 | [GET /api/seekers](#get-apiseekers)              | Get All Job Seekers               |
@@ -136,8 +137,55 @@ Response body:
     "email": "companywork@company.com",
     "about": "Company Work, we know that finding the best document management solution for your organization means reducing costs without sacrificing access to information.",
     "location": "Abia, Nigeria",
-    "profileImg": "https://res.cloudinary.com/elbon/image/upload/v1561734286/luncher_assets/pfzxjfpkh47yepawxbzf.jpg"
+    "profileImg": "https://res.cloudinary.com/elbon/image/upload/v1561734286/luncher_assets/pfzxjfpkh47yepawxbzf.jpg",
+    "jobs": [
+        {
+            "id": 10,
+            "title": "Engineering Recruiting Director",
+            "description": "Responsible for leading a safe and educational classroom environment by providing daily care, nurturing and development of children.",
+            "location": "Lagos, Nigeria",
+            "userId": 5,
+            "createdAt": "2019-07-30T09:39:43.205Z"
+        },
+        {
+            "id": 11,
+            "title": "Software Engineer",
+            "description": "Developing new systems and improving existing systems.",
+            "location": "Remote",
+            "userId": 5,
+            "createdAt": "2019-07-30T09:39:43.205Z"
+        },
+        ...
+    ]
   }
+```
+
+#### GET /api/company
+
+_**Description**: Returns all companies_.
+
+Response body:
+
+```json
+  [
+    {
+      "id": 5,
+      "name": "Company Work",
+      "email": "companywork@company.com",
+      "about": "Company Work, we know that finding the best document management solution for your organization means reducing costs without sacrificing access to information.",
+      "location": "LocalHost, PORT, 8080",
+      "profileImg": "https://res.cloudinary.com/elbon/image/upload/v1561734286/luncher_assets/pfzxjfpkh47yepawxbzf.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Company Work",
+      "email": "companywork2@company.com",
+      "about": "promotions build more momentum for big results.",
+      "location": "LocalHost, PORT, 8080",
+      "profileImg": "https://res.cloudinary.com/elbon/image/upload/v1561734286/luncher_assets/pfzxjfpkh47yepawxbzf.jpg"
+    }
+    ...
+  ]
 ```
 
 #### PUT /api/company
@@ -165,9 +213,7 @@ Response body:
 
 ```json
   {
-    "id": 5,
-    "name": "Company Work",
-    "email": "companywork@company.com",
+    "id": 11,
     "about": "Company Work, we know that finding the best document management solution for your organization means reducing costs without sacrificing access to information.",
     "location": "LocalHost, PORT, 8080",
     "profileImg": "https://res.cloudinary.com/elbon/image/upload/v1561734286/luncher_assets/pfzxjfpkh47yepawxbzf.jpg"
@@ -299,6 +345,7 @@ Response body:
       "title": "Delivery Driver",
       "description": "You’ll play a critical role in delivering on our promise to provide our customers with excellent customer service.",
       "location": "Job Location on the Moon",
+      "companyId": 6,
       "company": "Company Name I",
       "email": "companyII@company.com",
       "createdAt": "2019-07-29T03:41:22.513Z"
@@ -308,6 +355,7 @@ Response body:
       "title": "Entry Level Marketing and Public Relations",
       "description": "We are actively seeking Entry-Level Professionals for our public relations & sales marketing team!",
       "location": "Job Location on the Sun",
+      "companyId": 7,
       "company": "Company Name II",
       "email": "companyII@company.com",
       "createdAt": "2019-07-29T03:41:22.513Z"
@@ -335,6 +383,7 @@ Response body:
     "title": "Delivery Driver",
     "description": "You’ll play a critical role in delivering on our promise to provide our customers with excellent customer service.",
     "location": "Job Location on the Moon",
+    "companyId": 7,
     "company": "Company Name I",
     "email": "companyII@company.com",
     "createdAt": "2019-07-29T03:41:22.513Z"

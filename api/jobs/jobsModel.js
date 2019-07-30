@@ -5,6 +5,7 @@ const returnJoinFields = [
   'jobs.title',
   'jobs.description',
   'jobs.location',
+  'jobs.userId as companyId',
   'users.name as company',
   'users.email',
   'jobs.createdAt',
