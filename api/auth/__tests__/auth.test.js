@@ -57,7 +57,7 @@ describe('AUTH', () => {
       const res = await request
         .post('/api/auth/login')
         .send({ email: 'email@email.com', password: user.password });
-      expect(res.status).toBe(409);
+      expect(res.status).toBe(400);
       expect(res.body.error).toBe('User with Email Does Not Exists');
     });
     it('Validate User Password', async () => {
