@@ -27,4 +27,10 @@ exports.seed = knex => knex('users')
       password: generatePassword('test'),
       isCompany: false,
     },
+    {
+      name: 'test company3',
+      email: 'testcompany3@test.com',
+      password: generatePassword('test'),
+      isCompany: true,
+    },
   ]));
