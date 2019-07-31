@@ -13,4 +13,10 @@ exports.seed = knex => knex('companyProfiles')
       profileImg: '',
       userId: 2,
     },
+    {
+      about: 'This is about Company Test 3.',
+      location: 'Huntington Beach, CA, USA',
+      profileImg: '',
+      userId: 5,
+    }
   ]));
