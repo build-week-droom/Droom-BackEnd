@@ -44,22 +44,25 @@ Request Error ( **400 - Bad Request** || **404 - Not Found** || **500 - Internal
 
 ### API Endpoints
 
-|                   ENDPOINT                       |            DESCRIPTION            |
-|--------------------------------------------------|-----------------------------------|
-| [GET /](#get)                                    | Base URL                          |
-| [POST /api/auth/register](#post-apiauthregister) | Register new Job Seeker / Company |
-| [POST /api/auth/login](#post-apiauthlogin)       | Login for User / Company          |
-| [GET /api/company](#get-apicompany)              | Get all Companies                |
-| [GET /api/company/id](#get-apicompanyid)         | Get a particular Company by ID    |
-| [PUT /api/company](#put-apicompany)              | Update Company Profile            |
-| [GET /api/seekers](#get-apiseekers)              | Get All Job Seekers               |
-| [GET /api/seekers/id](#get-apiseekersid)         | Get Job Seeker by ID              |
-| [PUT /api/seekers](#put-apiseekers)              | Update a Job Seeker Profile       |
-| [GET /api/jobs](#get-apijobs)                    | Get all Jobs                      |
-| [GET /api/jobs/id](#get-apijobsid)               | Get a particular Job by ID        |
-| [POST /api/jobs](#post-apijobs)                  | Create a new Job posting          |
-| [PUT /api/jobs/id](#put-apijobsid)               | Update Job                        |
-| [DELETE /api/jobs/id](#put-apijobs)              | Delete a particular Job           |
+|                   ENDPOINT                         |            DESCRIPTION                              |
+|----------------------------------------------------|-----------------------------------------------------|
+| [GET /](#get)                                      | Base URL                                            |
+| [POST /api/auth/register](#post-apiauthregister)   | Register new Job Seeker / Company                   |
+| [POST /api/auth/login](#post-apiauthlogin)         | Login for User / Company                            |
+| [GET /api/company](#get-apicompany)                | Get all Companies                                   |
+| [GET /api/company/id](#get-apicompanyid)           | Get a particular Company by ID                      |
+| [PUT /api/company](#put-apicompany)                | Update Company Profile                              |
+| [GET /api/seekers](#get-apiseekers)                | Get All Job Seekers                                 |
+| [GET /api/seekers/id](#get-apiseekersid)           | Get Job Seeker by ID                                |
+| [PUT /api/seekers](#put-apiseekers)                | Update a Job Seeker Profile                         |
+| [GET /api/jobs](#get-apijobs)                      | Get all Jobs                                        |
+| [GET /api/jobs/id](#get-apijobsid)                 | Get a particular Job by ID                          |
+| [POST /api/jobs](#post-apijobs)                    | Create a new Job posting                            |
+| [PUT /api/jobs/id](#put-apijobsid)                 | Update Job                                          |
+| [DELETE /api/jobs/id](#put-apijobs)                | Delete a particular Job                             |
+| [GET /api/matches](#get-apimatches)                | Get all Matches by a User                           |
+| [POST /api/matches/company](#get-apimatchescompany)| User(Company) can send a potential match(job seeker)|
+| [POST /api/matches/seeker](#get-apimatchesseeker)  | User(Job Seeker) can send a potential match(Company)|
 
 #### GET /
 
@@ -473,6 +476,111 @@ Response body: (**204 - No Content**)
 
 ```json
   
+```
+
+## Matches
+
+#### GET /api/matches
+
+_**Description**: Return all matches for user wth token_.
+
+Header
+
+```json
+  ...
+  Authorization: token
+```
+
+Response body:
+
+```json
+  [
+    {
+        "id": 4,
+        "companyId": 2,
+        "companyName": "test company2",
+        "jobSeekerId": 3,
+        "jobSeekerName": "test jobseeker1",
+        "createdAt": "2019-07-31T11:57:45.455Z",
+        "matchedAt": "2019-07-31T11:57:49.798Z",
+        "isMatch": true
+    },
+    {
+        "id": 3,
+        "companyId": 2,
+        "companyName": "test company2",
+        "jobSeekerId": 4,
+        "jobSeekerName": "test jobseeker2",
+        "createdAt": "2019-07-31T11:57:45.455Z",
+        "matchedAt": "2019-07-31T11:57:45.453Z",
+        "isMatch": true
+    }
+    ...
+  ]
+```
+
+#### POST /api/matches/company
+
+_**Description**: User(company) can add a potential match(Job seeker).
+
+Header
+
+```json
+  ...
+  Authorization: token(company)
+```
+
+Request body:
+
+```json
+  {
+    "match": 2(jobseekerId)
+  }
+```
+
+Response body:
+
+```json
+  {
+    "id": 3,
+    "companyId": 1,
+    "jobSeekerId": 2,
+    "createdAt": "2019-07-31T11:57:45.455Z",
+    "matchedAt": "2019-07-31T12:10:29.124Z",
+    "isMatch": false || true
+}
+```
+
+#### POST /api/matches/seeker
+
+_**Description**: User(job seeker) can add a potential match(company)._
+
+Header
+
+```json
+  ...
+  Authorization: token(company)
+```
+
+Request body:
+
+```json
+  {
+    "match": 2(companyId)
+  }
+```
+
+Response body:
+
+```json
+  {
+    "id": 3,
+    "companyId": 2,
+    "jobSeekerId": 2,
+    "createdAt": "2019-07-31T11:57:45.455Z",
+    "matchedAt": "2019-07-31T12:10:29.124Z",
+    "isMatch": false || true
+}
 ```
 
 ## Technologies
