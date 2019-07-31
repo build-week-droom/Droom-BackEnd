@@ -24,7 +24,7 @@ const validateEmail = async (req, res, next) => {
     }
     throw new Error('User with Email Does Not Exists');
   } catch (error) {
-    return res.status(409).json({ error: error.message });
+    return res.status(400).json({ error: error.message });
   }
 };
 
