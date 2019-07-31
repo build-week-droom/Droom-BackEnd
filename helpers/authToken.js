@@ -6,7 +6,7 @@ const secret = process.env.JWT_SECRET
 module.exports = {
   generateToken: ({ id, email, isCompany }) => {
     const payload = { id, email, isCompany };
-    const options = { expiresIn: '24h' };
+    const options = { expiresIn: '7d' };
 
     return jwt.sign(payload, secret, options);
   },
