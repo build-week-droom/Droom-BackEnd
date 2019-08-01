@@ -12,7 +12,7 @@
     "test": "cross-env DB_ENV=test jest --verbose --detectOpenHandles --forceExit"
   },
   "engines": {
-    "node": "10.16.0"
+    "node": "10"
   },
   "repository": {
     "type": "git",
