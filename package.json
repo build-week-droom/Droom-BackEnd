@@ -9,7 +9,7 @@
     "server": "cross-env DB_ENV=development nodemon ./index.js",
     "migrate-dev": "npx knex migrate:rollback && npx knex migrate:latest && npx knex seed:run",
     "pretest": "npx knex migrate:rollback --env=test && npx knex migrate:latest --env=test && npx knex seed:run --env=test ",
-    "test": "cross-env DB_ENV=test jest --verbose --forceExit"
+    "test": "cross-env DB_ENV=test jest --verbose"
   },
   "engines": {
     "node": "10"
