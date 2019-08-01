@@ -11,14 +11,6 @@ const selectFields = [
   'matches.isMatch',
 ];
 
-function getAll() {
-  return db('matches')
-    .select(selectFields)
-    .join('users as cusers', 'matches.companyId', 'cusers.id')
-    .join('users as jusers', 'matches.jobSeekerId', 'jusers.id')
-    .where('isMatch', true);
-}
-
 function get(authUserId) {
   return db('matches')
     .select(selectFields)
@@ -91,9 +83,16 @@ async function addSeeker(authUserId, matchId) {
     });
 }
 
+function getMatch(authUserId, matchId) {
+  return db('matches')
+    .select('id')
+    .where({ id: matchId, jobSeekerId: authUserId, isMatch: true })
+    .orWhere({ id: matchId, companyId: authUserId, isMatch: true });
+}
+
 module.exports = {
-  getAll,
   get,
   addCompany,
   addSeeker,
+  getMatch,
 };
