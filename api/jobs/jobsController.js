@@ -10,8 +10,8 @@ async function getAllJobs(req, res) {
 }
 
 async function getJob(req, res) {
-  const { id } = req.params;
   try {
+    const { id } = req.params;
     const job = await Jobs.getBy(id);
     res.status(200).json(job);
   } catch (error) {
