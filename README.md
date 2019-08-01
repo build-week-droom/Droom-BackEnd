@@ -645,7 +645,7 @@ Request body:
 
 ```json
   {
-    "messgaes": "Hello, ..."
+    "messages": "Hello, ..."
   }
 ```
 
