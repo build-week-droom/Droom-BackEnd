@@ -62,7 +62,7 @@ Request Error ( **400 - Bad Request** || **404 - Not Found** || **500 - Internal
 | [DELETE /api/jobs/id](#put-apijobs)                | Delete a particular Job                             |
 | [GET /api/matches](#get-apimatches)                | Get all Matches by a User                           |
 | [POST /api/matches/company](#get-apimatchescompany)| User(Company) can send a potential match(job seeker)|
-| [POST /api/matches/seeker](#get-apimatchesseeker)  | User(Job Seeker) can send a potential match(Company)|
+| [POST /api/matches/seeker](#post-apimatchesseeker) | User(Job Seeker) can send a potential match(Company)|
 | [GET /api/messages/id](#get-apimessagesid)         | User can get all messages with match                |
 | [POST /api/messages/id](#post-apimessagesid)       | User can send message to match                      |
 
@@ -561,7 +561,7 @@ Header
 
 ```json
   ...
-  Authorization: token(company)
+  Authorization: token(seeker)
 ```
 
 Request body:
