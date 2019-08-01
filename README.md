@@ -63,6 +63,8 @@ Request Error ( **400 - Bad Request** || **404 - Not Found** || **500 - Internal
 | [GET /api/matches](#get-apimatches)                | Get all Matches by a User                           |
 | [POST /api/matches/company](#get-apimatchescompany)| User(Company) can send a potential match(job seeker)|
 | [POST /api/matches/seeker](#get-apimatchesseeker)  | User(Job Seeker) can send a potential match(Company)|
+| [GET /api/messages/id](#get-apimessagesid)         | User can get all messages with match                |
+| [POST /api/messages/id](#post-apimessagesid)       | User can send message to match                      |
 
 #### GET /
 
@@ -580,6 +582,82 @@ Response body:
     "createdAt": "2019-07-31T11:57:45.455Z",
     "matchedAt": "2019-07-31T12:10:29.124Z",
     "isMatch": false || true
+}
+```
+
+## Messages
+
+#### GET /api/messages/id
+
+_**Description**: Returns the messages between match(job seeker and company) by providing the matchId_.
+
+Header
+
+```json
+  ...
+  Authorization: token
+```
+
+Response body:
+
+```json
+  [
+    {
+        "id": 5,
+        "matchId": 6,
+        "sentById": 4,
+        "sentByName": "John Doe",
+        "jobSeekerId": 4,
+        "jobSeekerName": "John Doe",
+        "companyId": 5,
+        "companyName": "Intake Company",
+        "message": "Hello, I'm interested in your last job listing, can I come in for a chat. thank you.",
+        "createdAt": "2019-08-01T10:57:42.157Z"
+    },
+    {
+        "id": 7,
+        "matchId": 6,
+        "sentById": 5,
+        "sentByName": "Intake Company",
+        "jobSeekerId": 4,
+        "jobSeekerName": "John Doe",
+        "companyId": 5,
+        "companyName": "Intake Company",
+        "message": "Sure, John Doe. Kindly come to the office on monday for a chat.",
+        "createdAt": "2019-08-01T10:57:59.113Z"
+    },
+    ...
+  ]
+```
+
+#### POST /api/messages/id
+
+_**Description**: Add a message between match. ```id - matchId```_.
+
+Header
+
+```json
+  ...
+  Authorization: token
+```
+
+Request body:
+
+```json
+  {
+    "messgaes": "Hello, ..."
+  }
+```
+
+Response body:
+
+```json
+  {
+    "id": 7,
+    "matchId": 6,
+    "sentBy": 4,
+    "message": "Hello, ...",
+    "createdAt": "2019-08-01T14:11:47.326Z"
 }
 ```
 
